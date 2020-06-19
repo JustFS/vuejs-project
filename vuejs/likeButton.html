@@ -17,15 +17,26 @@
     <img class="" style="width: 6%; margin: auto;" src="../media/vueLogo.png" alt="">
   </header>
 
-  <div id="app" class="btn">
-    {{ message }}
+
+
+  <div v-if="type === 'A'">
+    A
+  </div>
+  <div v-else-if="type === 'B'">
+    B
+  </div>
+  <div v-else-if="type === 'C'">
+    C
+  </div>
+  <div v-else>
+    Ni A, ni B et ni C
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'Wesh alors'
+        type: 'A'
       }
     })
   </script>

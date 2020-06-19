@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Vuejs Playground</title>
+
+  <link rel="icon" href="../media/vueLogo.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="../node_modules/tailwindcss/dist/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body class="text-center">
+
+  <header class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md rounded-full m-10" style="font-size: 3.5rem;">
+    <h1 class="text-center" >VUE JS PLAYGROUND</h1>
+    <img class="" style="width: 6%; margin: auto;" src="../media/vueLogo.png" alt="">
+  </header>
+
+
+
+  <div id="todo-list-example">
+    <form v-on:submit.prevent="addNewTodo">
+      <label for="new-todo">Ajouter une tâche</label>
+      <input
+        v-model="newTodoText"
+        id="new-todo"
+        placeholder="Ex. nourrir le chat"
+      >
+      <button>Add</button>
+    </form>
+    <ul>
+      <li
+        is="todo-item"
+        v-for="(todo, index) in todos"
+        v-bind:key="todo.id"
+        v-bind:title="todo.title"
+        v-on:remove="todos.splice(index, 1)"
+      ></li>
+    </ul>
+  </div>
+
+  <script>
+    Vue.component('todo-item', {
+      template: '\
+        <li>\
+          {{ title }}\
+          <button v-on:click="$emit(\'remove\')" class="bg-gray-300">Supprimer</button>\
+        </li>\
+      ',
+      props: ['title']
+    })
+    
+    new Vue({
+      el: '#todo-list-example',
+      data: {
+        newTodoText: '',
+        todos: [
+          {
+            id: 1,
+            title: 'Faire la vaisselle',
+          },
+          {
+            id: 2,
+            title: 'Sortir les poubelles',
+          },
+          {
+            id: 3,
+            title: 'Tondre la pelouse'
+          }
+        ],
+        nextTodoId: 4
+      },
+      methods: {
+        addNewTodo: function () {
+          this.todos.push({
+            id: this.nextTodoId++,
+            title: this.newTodoText
+          })
+          this.newTodoText = ''
+          console.log(this.$data.todos)
+        }
+      },      
+    })    
+  </script>
+</body>
+</html>
