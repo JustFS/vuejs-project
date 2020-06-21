@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Vuejs Playground</title>
+
+  <link rel="icon" href="../media/vueLogo.png" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="../node_modules/tailwindcss/dist/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body class="text-center">
+
+  <header class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md rounded-full m-10" style="font-size: 3.5rem;">
+    <h1 class="text-center" >VUE JS PLAYGROUND</h1>
+    <img class="" style="width: 6%; margin: auto;" src="../media/vueLogo.png" alt="">
+  </header>
+
+  <div id="app-7">
+    <ol>
+      <todo-item
+        v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id"
+      ></todo-item>
+    </ol>
+  </div>
+
+
+  <script>
+    Vue.component('todo-item', {
+  // Le composant todo-item accepte maintenant une
+  // « prop » qui est comme un attribut personnalisé.
+  // Cette prop est appelée todo.
+      props: ['todo'],
+      template: '<li>{{ todo.text }}</li>'
+    })
+
+    var app7 = new Vue({
+      el: '#app-7',
+      data: {
+        groceryList: [
+          { id: 0, text: 'Légumes' },
+          { id: 1, text: 'Fromage' },
+          { id: 2, text: 'Test' }
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
