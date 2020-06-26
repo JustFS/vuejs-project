@@ -1,4 +1,9 @@
-<?php require 'C:\wamp64\www/vuejs-project/views/inc/header.php'; ?>
+<?php 
+
+  require_once dirname(dirname(__DIR__)) . "/bootstrap.php";
+  require APPROOT . '/views/inc/header.php'; 
+  
+?>
 
   <div id="app-7">
     <ol>
@@ -9,7 +14,6 @@
       ></todo-item>
     </ol>
   </div>
-
 
   <script>
     Vue.component('todo-item', {

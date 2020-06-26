@@ -1,3 +1,9 @@
+<?php 
+
+  require_once dirname(dirname(__DIR__)) . "/bootstrap.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,8 @@
   <link rel="icon" href="img/vueLogo.png" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="<?= URLROOT; ?>/style.css">
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>

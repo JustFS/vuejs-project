@@ -1,4 +1,10 @@
-<?php require 'C:\wamp64\www/vuejs-project/views/inc/header.php'; ?>
+<?php 
+
+  require_once dirname(dirname(__DIR__)) . "/bootstrap.php";
+  require APPROOT . '/views/inc/header.php';  
+
+
+?>
 
   <div id="todo-list-example">
     <form v-on:submit.prevent="addNewTodo">
